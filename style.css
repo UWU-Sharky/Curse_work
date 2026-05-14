@@ -1,0 +1,5 @@
+body { background-color: #f8fafc; }
+.input-group { margin-bottom: 1rem; }
+label { display: block; font-size: 0.875rem; font-weight: 500; color: #374151; margin-bottom: 0.25rem; }
+input { width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem; font-size: 0.875rem; }
+input:focus { outline: 2px solid #3b82f6; border-color: transparent; }

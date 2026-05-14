@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Численное исследование маргинальных распределений</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body class="p-4 md:p-8">
+    <div class="max-w-6xl mx-auto">
+        <header class="mb-8 border-b pb-4">
+            <h1 class="text-3xl font-bold text-gray-800">Исследование маргинальных распределений</h1>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <div class="lg:col-span-1 space-y-6 bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h2 class="text-xl font-semibold text-gray-700 border-b pb-2">Параметры</h2>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="input-group">
+                        <label for="lam">λ (Вход)</label>
+                        <input type="number" id="lam" value="5" step="0.1" oninput="updateAll()">
+                    </div>
+                    <div class="input-group">
+                        <label for="mu">μ (Обслуж.)</label>
+                        <input type="number" id="mu" value="1" step="0.1" oninput="updateAll()">
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wider">Переходы α_ij</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="input-group">
+                            <label>α10</label>
+                            <input type="number" id="a10" value="0.5" step="0.1" oninput="updateAll()">
+                        </div>
+                        <div class="input-group">
+                            <label>α12</label>
+                            <input type="number" id="a12" value="3.0" step="0.1" oninput="updateAll()">
+                        </div>
+                        <div class="input-group">
+                            <label>α20</label>
+                            <input type="number" id="a20" value="0.5" step="0.1" oninput="updateAll()">
+                        </div>
+                        <div class="input-group">
+                            <label>α21</label>
+                            <input type="number" id="a21" value="1.0" step="0.1" oninput="updateAll()">
+                        </div>
+                        <div class="input-group">
+                            <label>α23</label>
+                            <input type="number" id="a23" value="2.0" step="0.1" oninput="updateAll()">
+                        </div>
+                        <div class="input-group">
+                            <label>α30</label>
+                            <input type="number" id="a30" value="1.0" step="0.1" oninput="updateAll()">
+                        </div>
+                        <div class="input-group">
+                            <label>α32</label>
+                            <input type="number" id="a32" value="0.5" step="0.1" oninput="updateAll()">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-4">
+                    <div id="results" class="p-4 bg-blue-50 rounded-lg border border-blue-100 space-y-2 text-sm text-blue-800">
+                        <!-- Сюда выводятся значения A_i -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- График -->
+            <div class="lg:col-span-3 bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <div class="h-[500px]">
+                    <canvas id="distributionChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
