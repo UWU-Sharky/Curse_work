@@ -22,15 +22,9 @@ function solveSystem() {
     const a30 = parseFloat(document.getElementById('a30').value);
     const a32 = parseFloat(document.getElementById('a32').value);
 
-    // Коэффициенты C_i (Стр. 2 документа)
     const C1 = mu + a10 + a12;
     const C2 = mu + a20 + a21 + a23;
     const C3 = mu + a30 + a32;
-
-    // Матрица системы M^T (Стр. 4)
-    // C1*A1 - a21*A2 = lam
-    // -a12*A1 + C2*A2 - a32*A3 = 0
-    // -a23*A2 + C3*A3 = 0
     
     const matrix = [
         [C1, -a21, 0],
