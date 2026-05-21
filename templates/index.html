@@ -13,14 +13,7 @@
 </head>
 <body class="bg-slate-50 min-h-screen text-slate-800">
     <div class="max-w-7xl mx-auto px-4 py-8">
-        
-        <!-- Шапка -->
-        <header class="mb-8 bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-            <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Исследование маргинальных распределений</h1>
-            <p class="text-slate-500 mt-2">Расчет стационарного пуассоновского режима сети обслуживания</p>
-        </header>
 
-        <!-- Рабочая зона -->
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
             
             <!-- Левая панель: Ввод параметров -->
@@ -41,7 +34,7 @@
                         </div>
 
                         <div class="pt-2 border-t border-slate-100">
-                            <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Коэффициенты переходов (α_ij)</h3>
+                            <h3 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Коэффициенты переходов</h3>
                             
                             <!-- Узел 1 -->
                             <div class="space-y-2 mb-4">
@@ -95,37 +88,48 @@
                     </form>
                 </div>
 
-                <!-- Блок вывода стационарных средних -->
-                <div class="mt-6 pt-4 border-t border-slate-100">
-                    <div id="resultsCard" class="p-4 bg-blue-50/50 border border-blue-100 rounded-xl space-y-2 text-sm text-blue-900">
-                        <p class="font-bold text-blue-950">Стационарные средние (A_i):</p>
-                        <div class="h-16 flex items-center justify-center">
-                            <span class="text-xs text-slate-400">Ожидание загрузки данных...</span>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- Правая панель: График и управление отображением -->
-            <div class="lg:col-span-3 bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col">
-                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-4 border-b border-slate-100 mb-6 gap-4">
-                    <h2 class="text-xl font-bold text-slate-900">Маргинальные распределения вероятностей состояний</h2>
+           <div class="lg:col-span-3 space-y-6">
+                <div class="flex flex-col gap-6 max-w-3xl w-full">
                     
-                    <!-- Выбор режима отображения графиков -->
-                    <div class="flex items-center gap-3 bg-slate-100 p-1.5 rounded-xl border border-slate-200">
-                        <span class="text-xs font-bold text-slate-500 uppercase tracking-wider pl-2">Показать:</span>
-                        <select id="graphFilter" class="bg-white border border-slate-200 text-slate-800 text-xs font-bold rounded-lg p-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer">
-                            <option value="all">Все узлы одновременно</option>
-                            <option value="node1">Только Узел 1</option>
-                            <option value="node2">Только Узел 2</option>
-                            <option value="node3">Только Узел 3</option>
-                        </select>
+                    <!-- График Узла 1 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col h-[350px]">
+                        <div class="border-b border-slate-100 pb-2 mb-3 flex justify-between items-center">
+                            <div>
+                                <h2 class="text-base font-bold text-blue-600">Узел 1</h2>
+                            </div>
+                        </div>
+                        <div class="relative flex-grow w-full">
+                            <canvas id="chartNode1"></canvas>
+                        </div>
                     </div>
-                </div>
-                
-                <!-- Контейнер для графика -->
-                <div class="relative flex-grow min-h-[400px] lg:min-h-[500px] w-full">
-                    <canvas id="distributionChart"></canvas>
+
+                    <!-- График Узла 2 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col h-[350px]">
+                        <div class="border-b border-slate-100 pb-2 mb-3 flex justify-between items-center">
+                            <div>
+                                <h2 class="text-base font-bold text-red-600">Узел 2</h2>
+                            </div>
+                        </div>
+                        <div class="relative flex-grow w-full">
+                            <canvas id="chartNode2"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- График Узла 3 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col h-[350px]">
+                        <div class="border-b border-slate-100 pb-2 mb-3 flex justify-between items-center">
+                            <div>
+                                <h2 class="text-base font-bold text-emerald-600">Узел 3</h2>
+                            </div>
+                        </div>
+                        <div class="relative flex-grow w-full">
+                            <canvas id="chartNode3"></canvas>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 

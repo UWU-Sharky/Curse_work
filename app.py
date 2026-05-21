@@ -54,11 +54,18 @@ def calculate():
     except Exception as e:
         return jsonify({"error": f"Внутренняя ошибка сервера: {str(e)}"}), 400
 
-    max_A = max(A)
-    max_n = max(int(max_A * 6), 10)# Увеличиваем диапазон для отображения распределения    
-    
+    percentile_limit = 0.999
+
+    # 2. Находим минимальное n для каждого узла, при котором CDF >= 0.999
+    n_limits = [int(poisson.ppf(percentile_limit, mean_val)) for mean_val in A]
+
+    # 3. Берем максимум среди трех узлов, чтобы у графиков была синхронная и красивая ось X.
+    # Задаем также минимальный порог (например, 10), чтобы при околонулевой нагрузке график не сжимался до 1-2 точек.
+    max_n = max(max(n_limits), 10)
+
+    # 4. Формируем массив целых чисел для оси X
     n_values = np.arange(0, max_n + 1)
-    
+        
     p1 = poisson.pmf(n_values, A[0]).tolist()
     p2 = poisson.pmf(n_values, A[1]).tolist()
     p3 = poisson.pmf(n_values, A[2]).tolist()
